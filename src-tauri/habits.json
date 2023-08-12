@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Sugar",
+    "question": "How much sugar do you consume daily?",
+    "placeholder": 30,
+    "inputSize": "short",
+    "unit": "g",
+    "weight": 2.5,
+    "healthyMaximum": 36
+  },
+  {
+    "title": "Video Games",
+    "question": "How long do you spend playing video games each day?",
+    "placeholder": 2.5,
+    "inputSize": "short",
+    "unit": " hours",
+    "weight": 1.5,
+    "healthyMaximum": 2.5
+  }
+]

@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+    @apply p-0 m-0 box-border text-white bg-background;
+    font-family: 'Inter', sans-serif;
+}
+
+h1 {
+    @apply text-6xl font-bold;
+}
+
+h3 {
+    @apply text-4xl;
+}
+
+p {
+    @apply text-2xl;
+}
