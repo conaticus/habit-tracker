@@ -21,14 +21,15 @@ export default function Question(
         habitsLength,
         inputs,
         setInputs,
-        setPage
+        setPage,
     }: Props) {
     const {
         title,
         question,
-        placeholder,
         inputSize,
         unit,
+        healthyMaximum,
+        links
     } = habit;
 
     function nextQuestion() {
@@ -54,10 +55,17 @@ export default function Question(
                 <Input
                     value={inputs[title] || ""}
                     unit={unit}
-                    placeholder={placeholder}
+                    placeholder={String(healthyMaximum)}
                     inputSize={inputSize}
                     onChange={(e) => setInput(e.target.value)}
                 />
+
+                {links ? (
+                    <div className="mt-8">
+                        <h2 className="mb-2">Links</h2>
+                        {links.map(link => <a target="_blank" rel="noopener noreferrer" href={link.link}>{link.name}</a>)}
+                    </div>
+                ) : <></>}
             </div>
 
             <div className="flex justify-between absolute bottom-8 w-full">

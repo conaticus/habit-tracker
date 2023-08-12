@@ -37,9 +37,9 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "habit-software",
-        "width": 800,
-        "height": 600
+        "title": "Habit Software",
+        "width": 1200,
+        "height": 750
       }
     ]
   }

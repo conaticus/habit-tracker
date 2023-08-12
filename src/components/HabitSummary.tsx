@@ -12,7 +12,8 @@ export default function HabitSummary({ habit }: Props) {
         healthyMaximum,
         concernRating,
         consumptionMultiplier,
-        percentage
+        percentage,
+        timescale
     } = habit;
 
     function getConcernRatingColour(): string {
@@ -35,10 +36,10 @@ export default function HabitSummary({ habit }: Props) {
                 {concernRating}
             </div>
         </div>
-        <p>Healthy Maximum per Day - {healthyMaximum}{unit}</p>
+        <p>Healthy Maximum per {timescale} - {healthyMaximum}{unit}</p>
         <p>Your Amount - {amount}{unit}</p>
         <br />
         <p>
-            You are having {consumptionMultiplier > 1 ? <strong>{Math.round(consumptionMultiplier).toFixed(1)}x</strong> : <><strong>{percentage}%</strong> of</>} the healthy amount of {title.toLowerCase()} each day.</p>
+            You are having {consumptionMultiplier > 1 ? <strong>{Math.round(consumptionMultiplier).toFixed(1)}x</strong> : <><strong>{percentage}%</strong> of</>} the healthy amount of {title.toLowerCase()} each {timescale}.</p>
     </div>
 }

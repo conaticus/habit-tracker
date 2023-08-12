@@ -1,20 +1,41 @@
 [
   {
     "title": "Sugar",
+    "timescale": "day",
     "question": "How much sugar do you consume daily?",
-    "placeholder": 30,
+    "links": [
+      {
+        "name": "Sugar Calculator",
+        "link": "https://www.nhs.uk/healthier-families/food-facts/sugar-calculator/"
+      }
+    ],
     "inputSize": "short",
     "unit": "g",
-    "weight": 2.5,
-    "healthyMaximum": 36
+    "weight": 2,
+    "healthyMaximum": 38
   },
   {
     "title": "Video Games",
+    "timescale": "day",
     "question": "How long do you spend playing video games each day?",
-    "placeholder": 2.5,
     "inputSize": "short",
     "unit": " hours",
     "weight": 1.5,
-    "healthyMaximum": 2.5
+    "healthyMaximum": 3
+  },
+  {
+    "title": "Alcohol",
+    "timescale": "week",
+    "question": "How much alcohol do you drink each week?",
+    "links": [
+      {
+        "name": "Units Calculator",
+        "link": "https://www.drinkaware.co.uk/tools/unit-and-calorie-calculator"
+      }
+    ],
+    "inputSize": "short",
+    "unit": " units",
+    "weight": 3.5,
+    "healthyMaximum": 14
   }
 ]

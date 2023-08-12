@@ -1,13 +1,19 @@
 export type InputSize = "short";
 
+interface Link {
+    name: string;
+    link: string;
+}
+
 export interface Habit {
     title: string;
+    timescale: string;
     question: string;
-    placeholder: string;
     inputSize: InputSize;
     unit: string;
     weight: number;
     healthyMaximum: number;
+    links?: Link[];
 }
 
 export interface QuestionInputs {

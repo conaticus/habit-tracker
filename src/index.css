@@ -13,10 +13,18 @@ h1 {
     @apply text-6xl font-bold;
 }
 
+h2 {
+    @apply text-5xl font-bold;
+}
+
 h3 {
     @apply text-4xl;
 }
 
 p {
     @apply text-2xl;
+}
+
+a {
+    @apply text-blue-500 text-3xl;
 }
