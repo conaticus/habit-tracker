@@ -2,13 +2,14 @@ import {ForwardedRef, forwardRef, InputHTMLAttributes} from "react";
 import {InputSize} from "../types.ts";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-   unit: string;
-   inputSize: InputSize,
+    unit: string;
+    inputSize: InputSize,
+    containerStyle?: string;
 }
 
 const Input = forwardRef(
     (
-        { unit, inputSize, ...inputProps }: Props,
+        { unit, inputSize, containerStyle, ...inputProps }: Props,
         ref: ForwardedRef<HTMLInputElement>
     ) => {
     let width: string;
@@ -23,7 +24,7 @@ const Input = forwardRef(
     }
 
     return (
-        <div className="flex">
+        <div className={`flex${" " + containerStyle || ""}`}>
             <input
                 ref={ref}
                 className={`text-center ${width} outline-none text-black rounded-l-lg text-2xl`}

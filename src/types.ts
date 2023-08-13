@@ -23,6 +23,7 @@ export interface QuestionInputs {
 export enum Page {
     Questions,
     Summary,
+    ScheduleGenerator
 }
 
 export type ConcernRating = "Severe" | "High" | "Medium" | "Acceptable" | "Healthy";

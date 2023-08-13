@@ -5,17 +5,29 @@ export enum ButtonStyle {
    Secondary,
 }
 
+export enum ButtonSize {
+    Small,
+    ExtraLarge,
+}
+
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-   buttonStyle?: ButtonStyle
+    buttonStyle?: ButtonStyle,
+    buttonSize?: ButtonSize;
+    additionalStyles?: string;
 }
 
 const Button = forwardRef(
-    ({ buttonStyle = ButtonStyle.Secondary, ...buttonProps }: Props,
+    ({ buttonStyle = ButtonStyle.Secondary, buttonSize = ButtonSize.Small, additionalStyles, ...buttonProps }: Props,
      ref: ForwardedRef<HTMLButtonElement>) => {
       const buttonColor = buttonStyle == ButtonStyle.Primary ? "bg-primary" : "bg-secondary";
       const fontWeight = buttonStyle == ButtonStyle.Primary ? "font-semibold" : "font-normal";
 
-      return <button ref={ref} {...buttonProps} className={`${buttonColor} ${fontWeight} mx-10 text-3xl h-16 w-80 rounded-xl disabled:opacity-50`} />
+      let textSize = buttonSize == ButtonSize.ExtraLarge ? "text-3xl" : "text-lg";
+      let height = buttonSize == ButtonSize.ExtraLarge ? "h-16" : "h-8";
+      let width = buttonSize == ButtonSize.ExtraLarge ? "w-80" : "w-48";
+      let borderRadius = buttonSize == ButtonSize.ExtraLarge ? "rounded-xl" : "rounded-md";
+
+      return <button ref={ref} {...buttonProps} className={`${buttonColor} ${fontWeight} ${textSize} ${height} ${width} ${borderRadius} disabled:opacity-50${" " + additionalStyles || ""}`} />
 })
 
 export default Button;

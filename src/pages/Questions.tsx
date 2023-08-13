@@ -3,12 +3,14 @@ import {invoke} from "@tauri-apps/api";
 import {Habit, Page, QuestionInputs} from "../types.ts";
 import Question from "../components/Question.tsx";
 import Summary from "./Summary.tsx";
+import usePageStore from "../stores/pageStore.ts";
+import ScheduleGenerator from "./ScheduleGenerator.tsx";
 
 function Questions() {
     const [habits, setHabits] = useState<Habit[]>([]);
     const [currentQuestionIdx, setCurrentQuestionIdx] = useState<number>(0);
     const [inputs, setInputs] = useState<QuestionInputs>({});
-    const [page, setPage] = useState(Page.Questions);
+    const { currentPage } = usePageStore();
 
     useEffect(() => {
          async function getHabits() {
@@ -22,7 +24,7 @@ function Questions() {
          getHabits();
     }, [])
 
-    if (page === Page.Questions) {
+    if (currentPage === Page.Questions) {
         if (habits.length > 0) {
             return <Question
                 habitsLength={habits.length}
@@ -31,13 +33,14 @@ function Questions() {
                 setCurrentQuestionIdx={setCurrentQuestionIdx}
                 inputs={inputs}
                 setInputs={setInputs}
-                setPage={setPage}
             />
         } else {
             return <>Loading</>;
         }
-    } else if (page === Page.Summary) {
+    } else if (currentPage === Page.Summary) {
         return <Summary habits={habits} inputs={inputs} />
+    } else if (currentPage === Page.ScheduleGenerator) {
+        return <ScheduleGenerator />
     }
 }
 

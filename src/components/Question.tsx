@@ -1,7 +1,8 @@
 import {Habit, Page, QuestionInputs} from "../types.ts";
 import Input from "../ui/Input.tsx";
-import Button, {ButtonStyle} from "../ui/Button.tsx";
+import Button, {ButtonSize, ButtonStyle} from "../ui/Button.tsx";
 import {Dispatch, SetStateAction} from "react";
+import usePageStore from "../stores/pageStore.ts";
 
 interface Props {
    habit: Habit;
@@ -10,7 +11,6 @@ interface Props {
    setCurrentQuestionIdx: Dispatch<SetStateAction<number>>;
    inputs: QuestionInputs,
    setInputs: Dispatch<SetStateAction<QuestionInputs>>;
-   setPage: Dispatch<SetStateAction<Page>>;
 }
 
 export default function Question(
@@ -21,7 +21,6 @@ export default function Question(
         habitsLength,
         inputs,
         setInputs,
-        setPage,
     }: Props) {
     const {
         title,
@@ -31,6 +30,8 @@ export default function Question(
         healthyMaximum,
         links
     } = habit;
+
+    const { setPage } = usePageStore();
 
     function nextQuestion() {
         setCurrentQuestionIdx(currentQuestionIdx + 1);
@@ -63,17 +64,17 @@ export default function Question(
                 {links ? (
                     <div className="mt-8">
                         <h2 className="mb-2">Links</h2>
-                        {links.map(link => <a target="_blank" rel="noopener noreferrer" href={link.link}>{link.name}</a>)}
+                        {links.map((link , idx)=> <a key={idx} target="_blank" rel="noopener noreferrer" href={link.link}>{link.name}</a>)}
                     </div>
                 ) : <></>}
             </div>
 
             <div className="flex justify-between absolute bottom-8 w-full">
-                <Button disabled={currentQuestionIdx == 0} onClick={previousQuestion}>Back</Button>
+                <Button additionalStyles="mx-10" buttonSize={ButtonSize.ExtraLarge} disabled={currentQuestionIdx == 0} onClick={previousQuestion}>Back</Button>
                 {currentQuestionIdx == habitsLength - 1 ? (
-                    <Button buttonStyle={ButtonStyle.Primary} onClick={() => setPage(Page.Summary)}>Summary</Button>
+                    <Button additionalStyles="mx-10" buttonSize={ButtonSize.ExtraLarge} buttonStyle={ButtonStyle.Primary} onClick={() => setPage(Page.Summary)}>Summary</Button>
                 ) : (
-                    <Button onClick={nextQuestion}>Next</Button>
+                    <Button additionalStyles="mx-10" buttonSize={ButtonSize.ExtraLarge} onClick={nextQuestion}>Next</Button>
                 )}
             </div>
         </>
